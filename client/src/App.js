@@ -1,7 +1,12 @@
 
 import './App.css';
-
+// states are variables that trigers rerenders in the page
+import {useState} from "react";
 function App() {
+
+const [password, setPassword] = useState('')
+const [title, setTitle] = useState('')
+
   return (
     <div className="App">
    {/* Adding form for new passwords */}
