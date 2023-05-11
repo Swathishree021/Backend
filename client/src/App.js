@@ -6,8 +6,8 @@ import {useState} from "react";
 import Axios from "axios";
 function App() {
 
-const [password, setPassword] = useState('')
-const [title, setTitle] = useState('')
+const [password, setPassword] = useState('');
+const [title, setTitle] = useState('');
 
 //calling a function
 const addPassword = () => {
@@ -20,7 +20,7 @@ const addPassword = () => {
   return (
     <div className="App">
    {/* Adding form for new passwords */}
-   <div className="AddingPassword">
+   <div className="Adding Password">
     <input type="text"
      placeholder="Ex.password123" 
      onChange={(event)=>{setPassword(event.target.value);
@@ -33,10 +33,11 @@ const addPassword = () => {
     }}
     />
     {/* api request on clicking add password button  */}
-    <button onClick={addPassword}> Add password </button>
+    <button onClick={addPassword}>Add password</button>
    </div>
     </div>
   );
 }
 
 export default App;
+
