@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const app = express();
 
@@ -24,8 +26,8 @@ const db = mysql.createConnection({
 
 //routes are used to directed to different pages 
 
-app.post('/addpassword',(req,res) => {
-  const {password, title} = req.body
+app.post('/Addpassword',(req,res) => {
+  const {password, title} = req.body;
 
   db.query(
 "INSERT INTO passwords (password, title) VALUES (?,?)",
