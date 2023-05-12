@@ -1,9 +1,13 @@
+import  "./App.css";
 
-import './App.css';
+
 // states are variables that trigers rerenders in the page
 import {useState} from "react";
+
 //axios is a library helps connecting to api to api
 import Axios from "axios";
+
+
 function App() {
 
 const [password, setPassword] = useState('');

@@ -1,5 +1,4 @@
 
-
 const express = require('express');
 const app = express();
 
@@ -10,6 +9,10 @@ const mysql = require('mysql');
 const cors =require('cors');
 const PORT = 3001;
 
+// Acessed to encrypt function and decrypt function
+const {encrypt, decrypt} = require('./EncryptionHandler')
+
+
 //allows connection b/w to servers in a same computer
 app.use(cors());
 
@@ -17,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 //create a variable called db
-const db = mysql.createConnection({
+const db = mysql.createConnection({   
     user: "root",
     host: "localhost",
     password: "password",
@@ -28,10 +31,14 @@ const db = mysql.createConnection({
 
 app.post('/Addpassword',(req,res) => {
   const {password, title} = req.body;
-
+ 
+// before inserting encrypt the password
+const hashedPassword = encrypt(password);
+     
   db.query(
-"INSERT INTO passwords (password, title) VALUES (?,?)",
-[password,title],
+"INSERT INTO passwords (password, title, iv) VALUES (?,?,?)",
+// passing both iv & hashed password
+[hashedPassword.password,title,hashedPassword.iv],
 (err,result) => {
     if (err) {
         console.log(err);
