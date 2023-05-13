@@ -6,7 +6,7 @@
     align-items: center;
    }
    
-   .Addingpassword {
+   .AddingPassword {
        display: flex;
        flex-direction: column;
        justify-content: center;
@@ -18,7 +18,7 @@
        margin-top: 20px;
    }
    
-   .Addingpassword button, input{
+   .AddingPassword button, input{
        width: 300px;
        height: 40px;
        border: none;
