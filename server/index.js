@@ -10,7 +10,7 @@ const cors =require('cors');
 const PORT = 3001;
 
 // Acessed to encrypt function and decrypt function
-const {encrypt, decrypt} = require('./EncryptionHandler')
+const {encrypt, decrypt} = require('./EncryptionHandler');
 
 
 //allows connection b/w to servers in a same computer
@@ -48,6 +48,25 @@ const hashedPassword = encrypt(password);
 }
 ); 
 });
+
+//display passwords in frontend
+//create get route & a callback function
+app.get("/showpasswords", (req,res) => {
+db.query("SELECT * FROM passwords;", (err,result) => { 
+if (err) {
+    console.log(err);
+}else { 
+//data recieved from db is stored in results
+    res.send(result);
+}
+});
+});
+
+//create a Route 
+app.post('/decryptpassword', (req,res) => {
+res.send(decrypt(req.body));
+})
+
 
 app.listen(PORT,()=> {
     console.log('server is running');
